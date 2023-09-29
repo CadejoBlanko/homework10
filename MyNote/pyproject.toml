@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "testpw10"
+version = "0.1.0"
+description = ""
+authors = ["Oleksandr Martyniuk <sasha.martynuk.1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.8"
+django = "^4.2.5"
+psycopg2 = "^2.9.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

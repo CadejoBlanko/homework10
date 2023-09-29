@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Organizer</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+</head>
+<body>
+<main class="container">
+    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url 'noteapp:note' %}" role="button">Додати цитату</a></li>
+            <li><a href="{% url 'noteapp:tag' %}" role="button">Додати тег</a></li>
+        </ul>
+        <ul>
+            <li>Ласкаво просимо <b>{{ user.username }}!</b></li>
+            <li><a href="{% url 'users:profile' %}" role="button">Профіль</a></li>
+            <li><a href="{% url 'users:logout' %}" role="button">Вхід</a></li>
+        </ul>
+        {% else %}
+        <ul>
+            <li><a href="{% url 'users:signup' %}" role="button">Зареєструватися</a></li>
+            <li><a href="{% url 'users:login' %}" role="button">Увійти</a></li>
+        </ul>
+        {% endif %}
+    </nav>
+
+    {% for note in notes %}
+    <ul>
+        <li>
+            {% if not note.done %}
+            <a href="{% url 'noteapp:detail' note.id %}" role="button" class="outline"> {{ note.name }} </a>
+            <a href="{% url 'noteapp:set_done' note.id %}" role="button"> Виконано </a>
+            <a href="{% url 'noteapp:delete' note.id %}" role="button" class="contrast"> Видалити цитату </a>
+            {% else %}
+            <a href="{% url 'noteapp:detail' note.id %}" role="button" class="secondary"><s>{{ note.name }}</s></a>
+            {% endif %}
+        </li>
+    </ul>
+    {% endfor %}
+</main>
+</body>
+</html>

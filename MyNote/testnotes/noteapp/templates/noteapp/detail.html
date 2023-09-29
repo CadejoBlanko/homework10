@@ -1,0 +1,15 @@
+{% extends "noteapp/base.html" %} {% load extract_tags %} {% block content %}
+
+<h1>{{note.name}}</h1>
+<p>Опис: <b>{{note.description}}</b></p>
+<p>Час створення: <kbd>{{note.created}}</kbd></p>
+{% if note.done %}
+<p>
+  Статус:
+  <ins>Completed</ins>
+</p>
+{% else %}
+<p>Статус: <i>Not implemented</i></p>
+{% endif %}
+<p>Теги: <small> {{ note.tags|tags }} </small></p>
+{% endblock %}
