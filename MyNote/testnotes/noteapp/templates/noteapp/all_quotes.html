@@ -1,0 +1,14 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+<h1>Публічні цитати</h1>
+
+{% for quote in quotes %}
+  <blockquote>
+    <p>{{ quote.text }}</p>
+    <footer>Автор: {{ quote.author }}</footer>
+  </blockquote>
+{% endfor %}
+
+{% endblock %}
