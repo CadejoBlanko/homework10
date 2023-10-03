@@ -12,6 +12,8 @@
         <ul>
             <li><a href="{% url 'noteapp:note' %}" role="button">Додати цитату</a></li>
             <li><a href="{% url 'noteapp:tag' %}" role="button">Додати тег</a></li>
+            <li><a href="{% url 'noteapp:all_quotes' %}" role="button">Публічні цитати</a></li>
+            <li><a href="{% url 'noteapp:add_quote' %}" role="button">Додати публічну цитату</a></li>
         </ul>
         <ul>
             <li>Ласкаво просимо <b>{{ user.username }}!</b></li>
