@@ -10,4 +10,6 @@ urlpatterns = [
     path('detail/<int:note_id>', views.detail, name='detail'),
     path('done/<int:note_id>', views.set_done, name='set_done'),
     path('delete/<int:note_id>', views.delete_note, name='delete'),
+    path('all_quotes/', views.all_quotes, name='all_quotes'),
+    path('add_quote/', views.add_quote, name='add_quote'),
 ]
