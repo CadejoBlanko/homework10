@@ -1,5 +1,5 @@
 from django.forms import ModelForm, CharField, TextInput
-from .models import Tag, Note
+from .models import Tag, Note, PublicNote
 
 
 class TagForm(ModelForm):
@@ -20,3 +20,9 @@ class NoteForm(ModelForm):
         model = Note
         fields = ['name', 'description']
         exclude = ['tags']
+
+
+class PublicNoteForm(ModelForm):
+    class Meta:
+        model = PublicNote
+        fields = ['author', 'text']
