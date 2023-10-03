@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import TagForm, NoteForm
-from .models import Tag, Note
+from .forms import TagForm, NoteForm, PublicNoteForm
+from .models import Tag, Note, PublicNote
 
 
 def main(request):
@@ -62,3 +62,19 @@ def set_done(request, note_id):
 def delete_note(request, note_id):
     Note.objects.get(pk=note_id, user=request.user).delete()
     return redirect(to='noteapp:main')
+
+
+def all_quotes(request):
+    quotes = PublicNote.objects.all()
+    return render(request, 'noteapp/all_quotes.html', {'quotes': quotes})
+
+def add_quote(request):
+    if request.method == 'POST':
+        form = PublicNoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('noteapp:all_quotes')
+    else:
+        form = PublicNoteForm()
+
+    return render(request, 'noteapp/add_quote.html', {'form': form})
