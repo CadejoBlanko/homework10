@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from env import EMAIL_USERNAME, EMAIL_PASSWORD, MAIL_BACKEND, MAIL_HOST, MAIL_PORT, MAIL_STARTTLS, MAIL_USE_SSL, MAIL_USE_TLS
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,7 +137,6 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-from env import EMAIL_USERNAME, EMAIL_PASSWORD, MAIL_BACKEND, MAIL_HOST, MAIL_PORT, MAIL_STARTTLS, MAIL_USE_SSL, MAIL_USE_TLS
 
 EMAIL_BACKEND = MAIL_BACKEND
 EMAIL_HOST = MAIL_HOST
